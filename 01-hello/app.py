@@ -6,7 +6,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 ## log in a live application
 import logging
 
-## the (constant) page we will return, as a string
+## the (constant) HTML page we will return, as a string
 HTML = """\
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@ HTML = """\
   </body>
 </html>"""
         
-## the handler object referred to in urls.py
+## the handler object for /hello referred to in urls, below
 class HelloWorld(webapp.RequestHandler):
 
     ## we only handle the HTTP GET method
@@ -35,7 +35,7 @@ class HelloWorld(webapp.RequestHandler):
         ## ...and that's it!
 
 
-## another URL handler that handles GETs but is deliberately broken.
+## another URL handler, that  handles GETs but is deliberately broken.
 class Broken(webapp.RequestHandler):
 
     ## this will raise a NameError when invoked, as BARF is undefined.
@@ -48,8 +48,8 @@ class Broken(webapp.RequestHandler):
 ## used to handle access to the specified URL.  we have just two for
 ## now: /hello and /broken
 urls = [
-    (r'/hello', views.HelloWorld),
-    (r'/broken', views.Broken),
+    (r'/hello', HelloWorld),
+    (r'/broken', Broken),
     ]
 ## EX. try accessing /hello/ - what happens?  why?  how might you
 ## allow /hello/ to work in addition to /hello?
