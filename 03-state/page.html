@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counting Is Fun!</title>
+    <meta charset='utf-8'>
+  </head>
+  
+  <body>
+    <p>Time now is {{ now }}.</p>
+    {% if counter %}
+    <p>The latest counter value is {{ counter.value }}.</p>
+    <p>Previous access was at {{ counter.atime }}.</p>
+    <p>It was created at {{ counter.ctime }}.</p>
+    {% endif %}
+    
+    <div style="float:left">
+      <form action="/incr" method="post" accept-charset="utf-8">
+        <input id="incr_button" type="submit" value="Increment"/>
+      </form>
+    </div>
+      
+    <div style="float:left">
+      <form action="/value" method="get" accept-charset="utf-8">
+        <input id="read_button" type="submit" value="Read"/>
+      </form>
+    </div>
+    
+  </body>
+</html>
