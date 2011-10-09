@@ -7,6 +7,9 @@ urls = [
     ## wait a random delay before returning
     (r'/wait-random/?', views.WaitRandom),
 
+    ## NB. in regular expressions, x? means zero or one x, ie,. x is
+    ## optional
+    
     ## wait a requested delay before returning, as a parameter, ie.,
     ## "/wait-param/?delay=2"
     (r'/wait-param/?', views.WaitParam),
@@ -17,7 +20,7 @@ urls = [
     ## NB.  decoding the regular expression above we have: the
     ## constant string "/wait-url/", followed by "(?P<delay>...)"
     ## which takes the result of ... and puts it in a variable named
-    ## "delay" where ... is "\d+", a sequence of one or more decimal
+    ## "delay". here ... is "\d+", a sequence of one or more decimal
     ## digits, and finally, following the delay parameter, an optional
     ## "/"
 
@@ -25,7 +28,6 @@ urls = [
     ## parameter optional.  don't forget to set a default value in
     ## views.py:WaitUrl:get() though!
     ]
-
 
 application = webapp.WSGIApplication(urls, debug=True)
 def main(): run_wsgi_app(application) 

@@ -22,7 +22,7 @@ class WaitRandom(webapp.RequestHandler):
         logging.info("request: %s" % (self.request,))
 
         ## generate a random integer in the range [0,10]
-        delay = random.randint(0,10)
+        delay = random.randint(0, 10)
         logging.info("delay: %d" % (delay,))
 
         ## sleep for the delay
