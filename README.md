@@ -35,6 +35,7 @@ these labs are:
 0. Plain Old Hello World! in Python
 -----------------------------------
 
+### Topics:
 + variables: strings, ints, floats, tuples (inc. singleton), lists,
   maps 
 + arithmetic operators
@@ -61,6 +62,7 @@ understanding of Python programming.
 1. Hello World!
 ---------------
 
+### Topics:
 + basic Google App Engine application structure
 + basic URL handling with a response (GET)
 + errors
@@ -77,6 +79,7 @@ two URLs:
 2. Hello Wait!
 --------------
 
+### Topics:
 + a more structured application 
 + simple parameter handling (GET)
 
@@ -98,6 +101,7 @@ The application presents three URL handlers:
 3. Hello again!
 ---------------
 
+### Topics:
 + storing and retrieving data
 + GET, POST
 + simple templates
