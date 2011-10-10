@@ -32,7 +32,7 @@ these labs are:
   result in modification of state stored at the server.
 
 
-0. Plain Old Hello World! in Python
+[0] Plain Old Hello World! in Python
 -----------------------------------
 
 ### Topics:
@@ -59,7 +59,7 @@ recommend at least reading through it.  More details can be found at
 understanding of Python programming. 
   
    
-1. Hello World!
+[1] Hello World!
 ---------------
 
 ### Topics:
@@ -76,7 +76,7 @@ two URLs:
 + `/error` which deliberately
 
 
-2. Hello Wait!
+[2] Hello Wait!
 --------------
 
 ### Topics:
@@ -98,7 +98,7 @@ The application presents three URL handlers:
   from the URL itself rather than as a request parameter.
 
 
-3. Hello again!
+[3] Hello again!
 ---------------
 
 ### Topics:
