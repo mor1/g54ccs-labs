@@ -50,8 +50,8 @@ that point.  String in Python can be enclosed in single (') or double
 is a verbatim string, i.e., one which includes all whitespace,
 newlines and so on until the appropriate closing triple. 
 
-Class Boilerplate
------------------
+Boilerplate
+-----------
 
 Next we have the definition of the class and its method used to handle
 incoming `GET` requests to the `/invoke` URL, followed by the simple
@@ -64,10 +64,29 @@ class Invoke(webapp.RequestHandler):
         logging.info("request: %s" % (self.request,))
 ```
 
+...followed by the meat of the programme, followed by the closing
+boilerplate:
+
+
+```python        
+        self.response.out.write(HTML % result)
+
+urls = [
+    (r'/invoke', Invoke),
+    ]
+
+application = webapp.WSGIApplication(urls, debug=True)
+def main():
+    run_wsgi_app(application) 
+if __name__ == "__main__":
+    main()
+```
+
+We will now consider the meat of the programme between these two
+blocks.
+
 Integers, Floats, String interpolation, Function calls
 ------------------------------------------------------
-
-Then we have the following block of code:
 
 ```python
         x = random.randint(0, 16)
@@ -114,13 +133,29 @@ given in the tuple.  The particular format specifiers used here are
 and `%0.3f` which takes a _f_loating point value and represents it as
 a decimal string to 3 decimal places.  
 
-Strings, Lists
---------------
+Strings
+-------
 
 ```python
-        s = "x"*10
-        result += "<p>%s</p>" % s
-        
+        s = "x"*10 + "y" + ":z"*5
+        ss = s.split(":")
+        result += "<p>%s -> '%s'</p>" % (s, ss)
+```
+
+Python has a wide range of string manipulation functions and methods.
+This demonstrates some simple ones: 
+
++ Multiplying a string by a number repeats the string containing that
+  many repeats; 
++ Adding two strings together concatenates them; and
++ Invoking a string's `split` method creates a list of strings by
+  dividing the original string where it contains any character in the
+  parameter.
+  
+Lists
+-----
+
+```python
         lst = [x, y]
         lst.append(x)
         result = "%s<p>lst='%s'</p>" % (result, lst)
@@ -130,9 +165,12 @@ Strings, Lists
 
 ```
 
-
-lists - you saw tuples with ints (...) -- singleton tuple vs scalar --
-lists similar but mutable -- can append/extend
+You have already seen _tuples_ -- sequences of variables enclosed in
+parentheses `(`...`)` -- which are _immutable_, i.e., they cannot be
+changed after being defined.  The equivalent
+_mutable_ type is the _list_, a sequence enclosed in square brackets
+`[`...`]`.  Lists support a number of operations to sort, separate,
+append, extend and so on.
 
 Dictionaries
 ------------
@@ -146,39 +184,43 @@ Dictionaries
         result += "<p>%s</p>" % d
 ```
 
-dictionary/map -- maps keys to values -- multiple types permittable
-(tech note: keys must be "hashable") -- 
+_Dictionaries_ known as _maps_ associate _values_ with _keys_.  That
+is, you insert a value associate with a key, and you can then
+subsequently get the value back out if you have the right key.  (By
+analogy with a dictionary where, if you know the word, you can
+retrieve the associated definition.)
+
+In Python, dictionaries are very flexible and widely used.  A single
+dictionary can simultaneously contain keys and values of many
+different types.  The main restriction is that keys must be
+_hashable_, but all the basic types meet this restriction so we will
+not discuss it further here.
 
 Iteration
 ---------
 
 ```python
-        for key in d:
-            result += "<p>key='%s' value='%s'</p>" % (key, "%s" % d[key])
-        
+        for k in d:
+            result += "<p>key='%s' value='%s'</p>" % (k, d[k])
 ```
 
-tuples, lists, dictionaries
-are iterable ie., can do for...in... on them
+Several types in Python are _iterable_, that is, you can _iterate_
+over them.  Iteration refers to the process of consider each element
+of a variable in turn.  So, for example, if you wish to consider every
+element of a list, you _iterate_ through the list.  The Python syntax
+for this is very simple: `for` <variable> `in` <iterable>`:
+do-stuff-with-variable`.  Iteration across a list or tuple considers
+each element in order; iteration across a dictionary considers each
+key in an arbitrary order (in fact, in the order defined by the hash
+value of the key). 
 
-...
+In the example above, we iterate through the dictionary `d` referring
+to each key as `k`.  For each key, we concatenate a paragraph
+containing the key and the corresponding value to the result string. 
 
 Closing Boilerplate
 -------------------
 
-```python        
-        self.response.out.write(HTML % result)
-
-urls = [
-    (r'/invoke', Invoke),
-    ]
-
-application = webapp.WSGIApplication(urls, debug=True)
-def main():
-    run_wsgi_app(application) 
-if __name__ == "__main__":
-    main()
-```
 
 Exercises
 ---------
@@ -191,7 +233,10 @@ __Ex.2__: Investigate some of the other built-in string manipulation
 functions available in Python, documented at 
 <http://docs.python.org/release/2.6.7/library/stdtypes.html#string-methods>.  
 
-__Ex.3__: Consider the following function definition:
+__Ex.3__: Investigate the builtin list functions in Python.  Modify
+your programme to print `lst` both unsorted and sorted.
+
+__Ex.4__: Consider the following function definition:
 
 ```python
 def p(s):
