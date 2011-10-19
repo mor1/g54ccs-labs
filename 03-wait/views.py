@@ -1,64 +1,52 @@
 import logging
 from google.appengine.ext import webapp
 
-import random, time ## to sleep for a random interval
-
-## parameterised HTML
 HTML = """\
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>A Delaying Hello World! page</title>
+    <title>A Basic Calculator</title>
     <meta charset='utf-8'>
   </head>
   
   <body>
-    Hello World! (after waiting %d seconds)
+    %s
   </body>
 </html>"""
         
-class WaitRandom(webapp.RequestHandler):
+class CalcParameters(webapp.RequestHandler):
     def get(self):
         logging.info("request: %s" % (self.request,))
 
-        ## generate a random integer in the range [0,10]
-        delay = random.randint(0, 10)
-        logging.info("delay: %d" % (delay,))
-
-        ## sleep for the delay
-        time.sleep(delay)
-
-        ## return a page to the user, filling in the delay
-        self.response.out.write(HTML % (delay,))
-
-class WaitParam(webapp.RequestHandler):
-    def get(self):
-        logging.info("request: %s" % (self.request,))
-
-        ## extract the delay parameter and convert to an integer
-        delay = int(self.request.get('delay'))
-        logging.info("delay: %d" % (delay,))
-
-        ## sleep and return as in WaitRandom:get()
-        time.sleep(delay)
-        self.response.out.write(HTML % (delay,))
+        x = int(self.request.get('x'))
+        y = int(self.request.get('y'))
+        op = self.request.get("op")
         
-class WaitUrl(webapp.RequestHandler):
+        logging.info("x:%d y:%d op:%s" % (x, y, op,))
 
-    ## note that the delay parameter below is constructed by the URL
-    ## handler
-    def get(self, delay):
+        if op.lower() == "add":
+            r = "PARAMETERS: %d + %d = %d" % (x, y, x+y)
+        elif op.lower() == "subtract":
+            r = "PARAMETERS: %d - %d = %d" % (x, y, x-y)
+        else:
+            r = "PARAMETERS: unknown operation %s" % (op,)
+
+        self.response.out.write(HTML % r)
+
+class CalcUrl(webapp.RequestHandler):
+    def get(self, op, x, y):
         logging.info("request: %s" % (self.request,))
 
-        ## convert the delay parameter to an integer
-        delay = int(delay)
-        logging.info("delay: %d" % (delay,))
+        x = int(x)
+        y = int(y)
+        
+        logging.info("x:%d y:%d op:%s" % (x, y, op,))
 
-        ## sleep and return as in WaitRandom:get()
-        time.sleep(delay)
-        self.response.out.write(HTML % (delay,))
+        if op.lower() == "add":
+            r = "URL: %d + %d = %d" % (x, y, x+y)
+        elif op.lower() == "subtract":
+            r = "URL: %d - %d = %d" % (x, y, x-y)
+        else:
+            r = "URL: unknown operation %s" % (op,)
 
-## EX. try invoking one of the handlers multiple times simultaneously
-## with different delay parameters - what happens?  what happens if
-## you do so against a deployed instance?  why?
-
+        self.response.out.write(HTML % r)
