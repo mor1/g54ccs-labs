@@ -21,7 +21,7 @@ the standard `logging` and `random` modules to enable simple logging
 of output and generation of random numbers.
 
 Next we have the HTML boilerplate for the page we will return:
-```python
+
     HTML = """ 
     <!DOCTYPE html>
     <html lang="en">
@@ -34,7 +34,7 @@ Next we have the HTML boilerplate for the page we will return:
         %s
       </body>
     </html>"""
-```
+
 This is a `string`, that is, `HTML` is a _variable_ -- a label
 representing some contents which can change -- that currently contains
 data which represents some text.  Note the `%s` toward the end -- this
