@@ -222,8 +222,11 @@ Several types in Python are _iterable_, that is, you can _iterate_
 over them.  Iteration refers to the process of consider each element
 of a variable in turn.  So, for example, if you wish to consider every
 element of a list, you _iterate_ through the list.  The Python syntax
-for this is very simple: `for <`variable`> in <`iterable`>:
-do-stuff-with-variable`.  Iteration across a list or tuple considers
+for this is very simple: 
+
+`for <`variable`> in <`iterable`>: do-stuff-with-variable`.  
+
+Iteration across a list or tuple considers
 each element in order; iteration across a dictionary considers each
 key in an arbitrary order (in fact, in the order defined by the hash
 value of the key). 
