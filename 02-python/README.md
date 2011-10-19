@@ -59,9 +59,10 @@ logging statement as in the first exercise.  Classes and methods are more
 advanced programming concepts which we will not discuss further here.
 
 ```python        
-class Invoke(webapp.RequestHandler):
-    def get(self):
-        logging.info("request: %s" % (self.request,))
+
+    class Invoke(webapp.RequestHandler):
+        def get(self):
+            logging.info("request: %s" % (self.request,))
 ```
 
 ...followed by the meat of the programme, followed by the closing
@@ -69,17 +70,18 @@ boilerplate:
 
 
 ```python        
-        self.response.out.write(HTML % result)
+        
+            self.response.out.write(HTML % result)
 
-urls = [
-    (r'/invoke', Invoke),
-    ]
+    urls = [
+        (r'/invoke', Invoke),
+        ]
 
-application = webapp.WSGIApplication(urls, debug=True)
-def main():
-    run_wsgi_app(application) 
-if __name__ == "__main__":
-    main()
+    application = webapp.WSGIApplication(urls, debug=True)
+    def main():
+        run_wsgi_app(application) 
+    if __name__ == "__main__":
+        main()
 ```
 
 We will now consider the meat of the programme between these two
@@ -89,13 +91,14 @@ Integers, Floats, String interpolation, Function calls
 ------------------------------------------------------
 
 ```python
-        x = random.randint(0, 16)
-        y = random.randint(16, 30)
 
-        z = x/y
-        f = float(x)/y
+            x = random.randint(0, 16)
+            y = random.randint(16, 30)
 
-        result = "<p>x=%d y=%d z=%d f=%0.3f</p>" % (x, y, z, f)
+            z = x/y
+            f = float(x)/y
+
+            result = "<p>x=%d y=%d z=%d f=%0.3f</p>" % (x, y, z, f)
 ```
 
 Taking each line in turn, this does the following:
@@ -137,9 +140,10 @@ Strings
 -------
 
 ```python
-        s = "x"*10 + "y" + ":z"*5
-        ss = s.split(":")
-        result += "<p>%s -> '%s'</p>" % (s, ss)
+
+            s = "x"*10 + "y" + ":z"*5
+            ss = s.split(":")
+            result += "<p>%s -> '%s'</p>" % (s, ss)
 ```
 
 Python has a wide range of string manipulation functions and methods.
