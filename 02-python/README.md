@@ -206,7 +206,7 @@ Dictionaries
 ```
 
 _Dictionaries_ known as _maps_ associate _values_ with _keys_.  That
-is, you insert a value associate with a key, and you can then
+is, you insert a value associated with a key, and you can then
 subsequently get the value back out if you have the right key.  (By
 analogy with a dictionary where, if you know the word, you can
 retrieve the associated definition.)
@@ -242,9 +242,6 @@ value of the key).
 In the example above, we iterate through the dictionary `d` referring
 to each key as `k`.  For each key, we concatenate a paragraph
 containing the key and the corresponding value to the result string. 
-
-Closing Boilerplate
--------------------
 
 
 Exercises
