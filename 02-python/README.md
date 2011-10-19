@@ -162,7 +162,6 @@ Lists
         result += "<p>elements:"
         for e in lst: result += "%d," % e
         result += "</p>"
-
 ```
 
 You have already seen _tuples_ -- sequences of variables enclosed in
@@ -171,6 +170,13 @@ changed after being defined.  The equivalent
 _mutable_ type is the _list_, a sequence enclosed in square brackets
 `[`...`]`.  Lists support a number of operations to sort, separate,
 append, extend and so on.
+
+Note one common problem with tuples is the following: _how do you
+represent a tuple with just a single element_?  The obvious way to do
+this -- `(x)` -- is unfortunately wrong: it is parsed as the
+arithmetic expression returning `x`, i.e., `(x) == x`.  If you need to
+represent a tuple with a single element, simply insert a trailing
+comma, i.e., `(x,)`.
 
 Dictionaries
 ------------
@@ -246,3 +252,5 @@ def p(s):
 Add this to the application after the HTML boilerplate string, and
 then make use of it to simplify and reduce repetition in your code.
 
+__Ex.5__: Explore the builtin methods available to both lists and
+dictionaries. 
