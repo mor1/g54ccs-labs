@@ -13,10 +13,11 @@ core Python language, which is quite simple and can only do relatively
 very basic operations.
 
 ```python
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
 
-import logging, random
+    from google.appengine.ext import webapp
+    from google.appengine.ext.webapp.util import run_wsgi_app
+
+    import logging, random
 ```
 
 In this case, we import two GAE specific modules, and then we import
@@ -160,12 +161,13 @@ Lists
 -----
 
 ```python
-        lst = [x, y]
-        lst.append(x)
-        result = "%s<p>lst='%s'</p>" % (result, lst)
-        result += "<p>elements:"
-        for e in lst: result += "%d," % e
-        result += "</p>"
+
+            lst = [x, y]
+            lst.append(x)
+            result = "%s<p>lst='%s'</p>" % (result, lst)
+            result += "<p>elements:"
+            for e in lst: result += "%d," % e
+            result += "</p>"
 ```
 
 You have already seen _tuples_ -- sequences of variables enclosed in
@@ -186,12 +188,13 @@ Dictionaries
 ------------
 
 ```python
-        d = { "0-10": x,
-              "10-20": y,
-              "zero": z,
-              "string": s,
-              }
-        result += "<p>%s</p>" % d
+
+            d = { "0-10": x,
+                  "10-20": y,
+                  "zero": z,
+                  "string": s,
+                  }
+            result += "<p>%s</p>" % d
 ```
 
 _Dictionaries_ known as _maps_ associate _values_ with _keys_.  That
@@ -210,8 +213,9 @@ Iteration
 ---------
 
 ```python
-        for k in d:
-            result += "<p>key='%s' value='%s'</p>" % (k, d[k])
+
+            for k in d:
+                result += "<p>key='%s' value='%s'</p>" % (k, d[k])
 ```
 
 Several types in Python are _iterable_, that is, you can _iterate_
