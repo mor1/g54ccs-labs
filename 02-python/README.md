@@ -23,18 +23,18 @@ of output and generation of random numbers.
 Next we have the HTML boilerplate for the page we will return:
 ```python
 
-HTML = """ \
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <title>Some Python</title>
-        <meta charset='utf-8'>
-      </head>
+HTML = """ 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Some Python</title>
+    <meta charset='utf-8'>
+  </head>
   
-      <body>
-        %s
-      </body>
-    </html>"""
+  <body>
+    %s
+  </body>
+</html>"""
 ```
 This is a `string`, that is, `HTML` is a _variable_ -- a label
 representing some contents which can change -- that currently contains
