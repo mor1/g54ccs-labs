@@ -45,6 +45,7 @@ Next we have the definition of the class and its method used to handle
 incoming `GET` requests to the `/invoke` URL, followed by the simple
 logging statement as in the first exercise.  Classes and methods are more
 advanced programming concepts which we will not discuss further here.
+
 ```python        
 class Invoke(webapp.RequestHandler):
     def get(self):
@@ -52,6 +53,7 @@ class Invoke(webapp.RequestHandler):
 ```
 
 Then we have the following block of code:
+
 ```python
         x = random.randint(0, 16)
         y = random.randint(16, 30)
@@ -61,6 +63,7 @@ Then we have the following block of code:
 
         result = "<p>x=%d y=%d z=%d f=%0.3f</p>" % (x, y, z, f)
 ```
+
 Taking each line in turn, this does the following:
 + Generates a random _integer_ between 0 and 10, and assigns it to the
   variable `x`; 
