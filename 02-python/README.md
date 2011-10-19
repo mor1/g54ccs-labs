@@ -123,18 +123,18 @@ by the separator (`.`) and then the name of the function (`randint`)
 followed by parentheses containing any parameters to the function
 (`(0, 16)` and `(16, 30)` in this case).
 
+Look closely at the difference between `z` and `f`: `z` is always 0
+because you cannot represent fractional (or irrational) numbers as a
+variable of integer type.  By converting `x` to a floating point value
+first, we allow non-integer values to be represented in the
+computation `float(x)/y` and so `z` is also a floating point value.
+
 The basic arithmetic operations are `+`, `-`, `*` (multiply) and `/`
 (divide).  Since performing an operation on a variable and storing the
 result back in the same variable is such a common operation, Python
 provides shortcuts for this: `+=`, `+-`, etc.  For example, `x += 1`
 is identical to `x = x+1`, i.e., it computes `x+1` and stores the
 result back into `x`.
-
-Look closely at the difference between `z` and `f`: `z` is always 0
-because you cannot represent fractional (or irrational) numbers as a
-variable of integer type.  By converting `x` to a floating point value
-first, we allow non-integer values to be represented in the
-computation `float(x)/y` and so `z` is also a floating point value.
 
 Also, look closely at the string interpolation: the substrings
 beginning `%` between the quotes "..." are _format specifiers_ --
