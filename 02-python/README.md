@@ -9,12 +9,12 @@ These allow you to access extra functionality than is provided by the
 core Python language, which is quite simple and can only do relatively
 very basic operations.
 
-'''python
+```python
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 import logging, random
-'''
+```
 
 --
 
