@@ -134,7 +134,8 @@ The basic arithmetic operations are `+`, `-`, `*` (multiply) and `/`
 result back in the same variable is such a common operation, Python
 provides shortcuts for this: `+=`, `+-`, etc.  For example, `x += 1`
 is identical to `x = x+1`, i.e., it computes `x+1` and stores the
-result back into `x`.
+result back into `x`.  To test for equality, use `==` -- `=` is used
+only to assign a value to a variable.
 
 Also, look closely at the string interpolation: the substrings
 beginning `%` between the quotes "..." are _format specifiers_ --
