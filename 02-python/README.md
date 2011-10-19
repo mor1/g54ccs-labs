@@ -127,7 +127,7 @@ Look closely at the difference between `z` and `f`: `z` is always 0
 because you cannot represent fractional (or irrational) numbers as a
 variable of integer type.  By converting `x` to a floating point value
 first, we allow non-integer values to be represented in the
-computation `float(x)/y` and so `z` is also a floating point value.
+computation `float(x)/y` and so `f` is also a floating point value.
 
 The basic arithmetic operations are `+`, `-`, `*` (multiply) and `/`
 (divide).  Since performing an operation on a variable and storing the
