@@ -28,8 +28,9 @@ class Invoke(webapp.RequestHandler):
 
         result = "<p>x=%d y=%d z=%d f=%0.3f</p>" % (x, y, z, f)
 
-        s = "x"*10
-        result += "<p>%s</p>" % s
+        s = "x"*10 + "y" + ":z"*5
+        ss = s.split(":")
+        result += "<p>%s -> '%s'</p>" % (s, ss)
         
         lst = [x, y]
         lst.append(x)
@@ -44,8 +45,8 @@ class Invoke(webapp.RequestHandler):
               "string": s,
               }
         result += "<p>%s</p>" % d
-        for key in d:
-            result += "<p>key='%s' value='%s'</p>" % (key, "%s" % d[key])
+        for k in d:
+            result += "<p>key='%s' value='%s'</p>" % (k, d[k])
         
         self.response.out.write(HTML % result)
 
