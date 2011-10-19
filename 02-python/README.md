@@ -4,6 +4,9 @@ G54CCS Labs, Exercise 2
 In this exercise you will extend your Google App Engine (GAE)
 application to introduce some more simple Python syntax.
 
+Imports
+-------
+
 First we see, as with the previous exercise, some _module imports_.
 These allow you to access extra functionality than is provided by the
 core Python language, which is quite simple and can only do relatively
@@ -19,6 +22,9 @@ import logging, random
 In this case, we import two GAE specific modules, and then we import
 the standard `logging` and `random` modules to enable simple logging
 of output and generation of random numbers.
+
+Constant String
+---------------
 
 Next we have the HTML boilerplate for the page we will return:
 
@@ -39,7 +45,13 @@ This is a `string`, that is, `HTML` is a _variable_ -- a label
 representing some contents which can change -- that currently contains
 data which represents some text.  Note the `%s` toward the end -- this
 will allow us to insert extra contents into the HTML boilerplate at
-that point. 
+that point.  String in Python can be enclosed in single (') or double
+(") quotes, but not a mixture.  Using triple single- or double-quotes
+is a verbatim string, i.e., one which includes all whitespace,
+newlines and so on until the appropriate closing triple. 
+
+Class Boilerplate
+-----------------
 
 Next we have the definition of the class and its method used to handle
 incoming `GET` requests to the `/invoke` URL, followed by the simple
@@ -51,6 +63,9 @@ class Invoke(webapp.RequestHandler):
     def get(self):
         logging.info("request: %s" % (self.request,))
 ```
+
+Integers, Floats, String interpolation, Function calls
+------------------------------------------------------
 
 Then we have the following block of code:
 
@@ -65,6 +80,7 @@ Then we have the following block of code:
 ```
 
 Taking each line in turn, this does the following:
+
 + Generates a random _integer_ between 0 and 10, and assigns it to the
   variable `x`; 
 + Generates a random integer between 10 and 20, and assigns it to the 
@@ -77,6 +93,12 @@ Taking each line in turn, this does the following:
   _string interpolation_, which contains the values of the _tuple_
   `x`, `y`, `z`, and `f` within an HTML paragraph (delimited by
   `<p>`...`</p>`). 
+
+_Function calls_ in Python mean putting the name of the module from
+which the function comes if required (`random` in this case), followed
+by the separator (`.`) and then the name of the function (`randint`)
+followed by parentheses containing any parameters to the function
+(`(0, 16)` and `(16, 30)` in this case).
 
 Look closely at the difference between `z` and `f`: `z` is always 0
 because you cannot represent fractional (or irrational) numbers as a
@@ -92,51 +114,90 @@ given in the tuple.  The particular format specifiers used here are
 and `%0.3f` which takes a _f_loating point value and represents it as
 a decimal string to 3 decimal places.  
 
-__Exercise__: Try changing the `%d`s to `%x`s and see what happens.
-Try some format specifiers from
-<http://docs.python.org/release/2.6.7/library/stdtypes.html#string-formatting-operations>. 
+Strings, Lists
+--------------
 
+```python
+        s = "x"*10
+        result += "<p>%s</p>" % s
+        
+        lst = [x, y]
+        lst.append(x)
+        result = "%s<p>lst='%s'</p>" % (result, lst)
+        result += "<p>elements:"
+        for e in lst: result += "%d," % e
+        result += "</p>"
 
+```
 
-
-
---
-
-some imports
-
-a constant HTML string for interpolation/result - note the %s
-
-some integers and string interpolation of those ints
-
-note the 1/3 = 0 -- need to use floats not ints
-
-string addition, mulitplication -- python has quite powerful string manip. techniques
 
 lists - you saw tuples with ints (...) -- singleton tuple vs scalar --
 lists similar but mutable -- can append/extend
 
+Dictionaries
+------------
+
+```python
+        d = { "0-10": x,
+              "10-20": y,
+              "zero": z,
+              "string": s,
+              }
+        result += "<p>%s</p>" % d
+```
+
 dictionary/map -- maps keys to values -- multiple types permittable
-(tech note: keys must be "hashable") -- tuples, lists, dictionaries
+(tech note: keys must be "hashable") -- 
+
+Iteration
+---------
+
+```python
+        for key in d:
+            result += "<p>key='%s' value='%s'</p>" % (key, "%s" % d[key])
+        
+```
+
+tuples, lists, dictionaries
 are iterable ie., can do for...in... on them
+
 ...
 
+Closing Boilerplate
+-------------------
 
-consider adding the following function at line xxx
+```python        
+        self.response.out.write(HTML % result)
 
+urls = [
+    (r'/invoke', Invoke),
+    ]
+
+application = webapp.WSGIApplication(urls, debug=True)
+def main():
+    run_wsgi_app(application) 
+if __name__ == "__main__":
+    main()
+```
+
+Exercises
+---------
+
+__Ex.1__: Try changing the `%d`s to `%x`s and see what happens.  Try
+some format specifiers from
+<http://docs.python.org/release/2.6.7/library/stdtypes.html#string-formatting-operations>.  
+
+__Ex.2__: Investigate some of the other built-in string manipulation
+functions available in Python, documented at 
+<http://docs.python.org/release/2.6.7/library/stdtypes.html#string-methods>.  
+
+__Ex.3__: Consider the following function definition:
+
+```python
 def p(s):
     return "<p>%s</p>" % s
+```
 
-...use this to simplify code/increase readability/reduce repetition
+Add this to the application after the HTML boilerplate string, and
+then make use of it to simplify and reduce repetition in your code.
 
-
-[[
-
-next ex:
-
-string split etc
-
-calculator eg
-
-params into app 
-
-]]
