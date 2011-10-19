@@ -23,7 +23,7 @@ of output and generation of random numbers.
 Next we have the HTML boilerplate for the page we will return:
 ```python
 
-HTML = """\
+HTML = """ \
     <!DOCTYPE html>
     <html lang="en">
       <head>
