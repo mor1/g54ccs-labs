@@ -157,12 +157,12 @@ Strings
 Python has a wide range of string manipulation functions and methods.
 This demonstrates some simple ones: 
 
-+ Multiplying a string by a number repeats the string containing that
-  many repeats; 
++ Multiplying a string by a number repeats the string the specified
+  number of times;
 + Adding two strings together concatenates them; and
 + Invoking a string's `split` method creates a list of strings by
   dividing the original string where it contains any character in the
-  parameter.
+  parameter (in this case, splits the string `s` on every `:` character).
   
 Lists
 -----
