@@ -88,8 +88,8 @@ boilerplate:
 We will now consider the meat of the programme between these two
 blocks.
 
-Integers, Floats, String interpolation, Function calls
-------------------------------------------------------
+Function calls, Integers, Floats, Arithmetic, String interpolation
+------------------------------------------------------------------
 
 ```python
 
@@ -122,6 +122,13 @@ which the function comes if required (`random` in this case), followed
 by the separator (`.`) and then the name of the function (`randint`)
 followed by parentheses containing any parameters to the function
 (`(0, 16)` and `(16, 30)` in this case).
+
+The basic arithmetic operations are `+`, `-`, `*` (multiply) and `/`
+(divide).  Since performing an operation on a variable and storing the
+result back in the same variable is such a common operation, Python
+provides shortcuts for this: `+=`, `+-`, etc.  For example, `x += 1`
+is identical to `x = x+1`, i.e., it computes `x+1` and stores the
+result back into `x`.
 
 Look closely at the difference between `z` and `f`: `z` is always 0
 because you cannot represent fractional (or irrational) numbers as a
