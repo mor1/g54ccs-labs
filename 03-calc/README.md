@@ -189,21 +189,24 @@ You should be able to follow most of this code with reference to the
 previous exercise.  There are four new uses of Python:
 
 + We must extract the parameters from the incoming request, referred
-  to as `self.request`; this is done using it's builtin `get()`
+  to as `self.request`; this is done using its builtin `get()`
   method, which ensures that we get either the value given by the
   user, or `None` if the user gave no value.
 + We want our parameters to be integers but they are passed in as
-  strings, so we use the `int()` function to convert them.
+  strings, so we use the builtin`int()` function to convert them from
+  strings to integers. 
 + We want to allow the user to specify the operation using any case
   (lower or upper), so we take what they give us, and convert it to
   all lower case by invoking the string's builting method `lower()`.
 + We then decide which arithmetic operation is requested by testing
-  with an `if`...`elif`...`else` clause.  This test the condition
+  with an `if`...`elif`...`else` clause.  This tests the condition
   after the `if` or `elif` ("else-if") and, if true, executes the
-  following block of code.  In this case if the `op` parameter, once
-  made lower case, is `add` then we add the `x` and `y` parameters
-  together and construct the string we wish to embed in the page.
-  Similarly in the case where `op` is `subtract`.
+  following block of code.  If false, the following block is skipped
+  and the next condition is evaluated, or if the `else` is reached,
+  that block of code is executed anyway.  In this case if the `op`
+  parameter, once made lower case, is `add` then we add the `x` and
+  `y` parameters together and construct the string we wish to embed in
+  the page.  Similarly in the case where `op` is `subtract`. 
   
 Using this method, you can easily handle parameters passed in by the
 user, in any order.  The drawback of this approach is that, because
@@ -233,3 +236,10 @@ URL, as in the second class:
 
             self.response.out.write(HTML % r)
 ```
+
+This code is identical to the `CalcParameters` code except that the
+parameters are now **not** extracted from the request.  Instead, the
+GAE libraries have already used the URL regular expressions provided
+to do this, and so the parameters are explicitly passed in as strings
+to the GET handler, `get()`. 
+
