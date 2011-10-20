@@ -63,12 +63,11 @@ longer have an `app.py` file:
 This begins with the usual boilerplate:
 
 ```python
-
     from google.appengine.ext import webapp
     from google.appengine.ext.webapp.util import run_wsgi_app
 ```
 
-Then followed by the following:
+Followed by:
 
 ```python
 
@@ -243,3 +242,15 @@ GAE libraries have already used the URL regular expressions provided
 to do this, and so the parameters are explicitly passed in as strings
 to the GET handler, `get()`. 
 
+__Ex.1__.  Change the URL specifications to enable
+<http://localhost:8080/calc-parameters/ to work.
+
+__Ex.2__.  Add, to both methods, the ability to multiply and divide.
+Recalling the use of `float()` in the previous exercise, pay
+particular attention to the type of the result when dividing. 
+
+__Ex.3__.  Extend both methods to support an optional third parameter
+with corresponding second operation.  That is, to allow the user to
+compute things like `1+2-3` or `4+5*10`.  Think about how to make the
+usual rules of arithmetic association works, i.e., how to ensure
+`4+5*10` is parsed as `4 + (5*10)` **not** `(4+5) * 10`. 
