@@ -31,7 +31,7 @@ Constant String
 
 Next we have the HTML boilerplate for the page we will return:
 
-    HTML = """ 
+    HTML = """\
     <!DOCTYPE html>
     <html lang="en">
       <head>
