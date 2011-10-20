@@ -144,7 +144,7 @@ beginning `%` between the quotes "..." are _format specifiers_ --
 placeholders which are filled in with strings representing the values
 given in the tuple.  The particular format specifiers used here are
 `%d` which produces the string representing an integer as a decimal;
-and `%0.3f` which takes a _f_loating point value and represents it as
+and `%0.3f` which takes a floating point value and represents it as
 a decimal string to 3 decimal places.  
 
 Strings
