@@ -84,8 +84,8 @@ launcher.  _Pay attention to this code too_!  It must match what is
 shown in the exercise you are doing -- if it does not, you must edit
 it appropriately.
 
-In general, assume that **all* code in your programme is
-**significant**, unless commented out.
+In general, assume that **all code in your programme is significant**,
+unless commented out. 
                
 ### Debugging
 
