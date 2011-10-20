@@ -20,8 +20,8 @@ class Invoke(webapp.RequestHandler):
     def get(self):
         logging.info("request: %s" % (self.request,))
         
-        x = random.randint(0, 10)
-        y = random.randint(10, 20)
+        x = random.randint(0, 16)
+        y = random.randint(16, 20)
 
         z = x/y
         f = float(x)/y
