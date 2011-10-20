@@ -1,5 +1,6 @@
-import logging
 from google.appengine.ext import webapp
+
+import logging
 
 HTML = """\
 <!DOCTYPE html>
