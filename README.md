@@ -19,11 +19,11 @@ the cloud.  You will need to create a new application for each, and
 enter the code associated with each lab.  You should also then attempt
 any questions/further exercises that are embedded within each lab. 
 
-### [Hello World](http://www.cs.nott.ac.uk/~mdf/g54ccs/g54ccs_lab01.pdf)
+### Hello World [[pdf]](http://www.cs.nott.ac.uk/~mdf/g54ccs/g54ccs_lab01.pdf)
 
 A simple static "Hello World" page as a GAE application. 
 
-### [Some Python](http://www.cs.nott.ac.uk/~rmm/teaching/2011-g54ccs/labs/02-python.pdf)
+### Some Python [[pdf]](http://www.cs.nott.ac.uk/~rmm/teaching/2011-g54ccs/labs/02-python.pdf)
 
 An extension of the first lab to create a more dynamic webpage, and to
 demonstrate more examples of Python syntax.
