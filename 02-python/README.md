@@ -1,8 +1,10 @@
 G54CCS Labs, Exercise 2
 =======================
 
-In this exercise you will extend your Google App Engine (GAE)
-application to introduce some more simple Python syntax.
+In last week's exercise you created a Google App Engine (GAE)
+application that displayed a static web page.  In this exercise you
+will extend this app to change the contents of that web page on each
+reload, and in passing, to introduce some more simple Python syntax. 
 
 Imports
 -------
@@ -88,8 +90,8 @@ boilerplate:
 We will now consider the meat of the programme between these two
 blocks.
 
-Function calls, Integers, Floats, Arithmetic, String interpolation
-------------------------------------------------------------------
+Function, Integers, Floats, Strings, Arithmetic
+-----------------------------------------------
 
 ```python
 
@@ -261,8 +263,8 @@ your programme to print `lst` both unsorted and sorted.
 __Ex.4__: Consider the following function definition:
 
 ```python
-def p(s):
-    return "<p>%s</p>" % s
+    def p(s):
+        return "<p>%s</p>" % s
 ```
 
 Add this to the application after the HTML boilerplate string, and
