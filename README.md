@@ -28,6 +28,12 @@ A simple static "Hello World" page as a GAE application.
 An extension of the first lab to create a more dynamic webpage, and to
 demonstrate more examples of Python syntax.
 
+### A Simple Calculator [[pdf]](http://www.cs.nott.ac.uk/~rmm/teaching/2011-g54ccs/labs/03-calc.pdf)
+
+Moving on from the basic applications of the first two labs, this one
+introduces more structure to your code, and handles user-supplied parameters,
+while implementing a simple arithmetic calculator web service. 
+
 Common Problems
 ---------------
 
