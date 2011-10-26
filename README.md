@@ -34,6 +34,12 @@ Moving on from the basic applications of the first two labs, this one
 introduces more structure to your code, and handles user-supplied parameters,
 while implementing a simple arithmetic calculator web service. 
 
+### A Stored Counter [[pdf]](http://www.cs.nott.ac.uk/~rmm/teaching/2011-g54ccs/labs/04-state.pdf)
+
+This moves on futher, introducing `POST` handling, templates and the use of
+GAE's simple table-based data store.
+
+
 Common Problems
 ---------------
 
