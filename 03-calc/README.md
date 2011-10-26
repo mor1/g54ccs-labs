@@ -242,6 +242,9 @@ GAE libraries have already used the URL regular expressions provided
 to do this, and so the parameters are explicitly passed in as strings
 to the GET handler, `get()`. 
 
+Exercises
+---------
+
 __Ex.1__.  Change the URL specifications to enable
 <http://localhost:8080/calc-parameters/ to work.
 
