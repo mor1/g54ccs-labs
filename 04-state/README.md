@@ -138,8 +138,8 @@ representation of the current time and date:
         return time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
 ```
 
-Followed by another that will prepend the directory which contains our
-template HTML page:
+Followed by another that will prepend the directory containing our
+HTML page template:
 
 ```python
     def t(p):
@@ -169,7 +169,7 @@ We continue:
                         }
             if counter: counter.put()
 
-            self.response.out.write(template.render("page.html", context))
+            self.response.out.write(template.render(t("page.html"), context))
 ```
 
 This now constructs a dictionary, `context` which contains the current time,
@@ -253,7 +253,7 @@ It continues:
                         }
             counter.put()
 
-            self.response.out.write(template.render("page.html", context))
+            self.response.out.write(template.render(t("page.html"), context))
 ```
 
 Here we _create_ an instance of `Counter` if none exists; if one does already
@@ -264,7 +264,6 @@ render and return the template page.
 
 Exercises
 ---------
-
 
 __Ex.1__. View the admin console for your running application at
 <http://localhost:8080/_ah/admin>.  How many rows are in your table?  What

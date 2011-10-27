@@ -58,12 +58,17 @@ Thus you **must** make sure you have your code correctly indented,
 otherwise it will not behave the way you expect.  Pay particular
 attention if you use different editors as some use tab characters,
 some use spaces, and so you can confuse things.  If in doubt, use the
-space bar to insert spaces to indent your code.
+space bar to insert spaces to indent your code.  
+
+_Notepad++_ appears to be particularly poor at being consistent with this, so
+I would strongy recommend using the Python specific environment, _IDLE_, which
+is installed as part of the Python distribution.  If you right-click a Python
+`.py` file, then "Open with IDLE" should be one of the options. 
 
 ### Application Names
 
 The GAE development server does not support application names
-containing UPPER CASE LETTERS.
+containing _any_ UPPER CASE LETTERS.
 
 ### SDK Location
 
@@ -107,3 +112,10 @@ default.  If you run your application from within the GAE Launcher,
 then you will need to explicitly request to see the console log by
 hitting `CTRL-L` or clicking on the "Logs" button.
 
+### App Engine Launcher
+
+If you have problems with the launcher, then it's likely to be connected to
+using the 
+rather poor `.BAT` file that is supplied to run the launcher.  Suggested fix
+is to run the `.EXE` directly from the launcher subdirectory; or to simply run
+the `dev_appserver.py` directly from the command line.

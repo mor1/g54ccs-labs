@@ -87,26 +87,25 @@ handler-class).  The first URL, `/calc-parameters` is handled by the
 `CalcParameters` class, and the second more complex URL,
 `/calc-url/...`, is handled by the `CalcUrl` class. 
 
-For the first URL, parameters are passed as HTTP URL parameters.
-These are specified by the user in the URL bar in the browser.  The
-set of parameters is separated from the constant part of the URL by a
-`?`.  Each separate parameter is separated from the others by a `&`.  For
-example, <http://localhost:8080/calc-parameters?x=1&y=10&op=subtract>
-    
-...invoked the URL <http://localhost:8080/calc-parameters> with three
-parameters, `x=1`, `y=2`, and `op=subtract`.
+For the first URL, parameters are passed as HTTP URL parameters.  These are
+specified by the user in the URL bar in the browser.  The set of parameters is
+separated from the constant part of the URL by a `?`.  Each separate parameter
+is separated from the others by a `&`.  For example,
+<http://localhost:8080/calc-parameters?x=1&y=10&op=subtract> invokes the URL
+<http://localhost:8080/calc-parameters> with three parameters, `x=1`, `y=2`,
+and `op=subtract`. 
 
-Each URL is actually specified as a _regular expression_ -- these are
-a common way to specify string _patterns_ rather than simple constant
-strings.  In the case of the second URL above, we specify a constant
-part (`/calc-url/`) followed by three variable parts (`(?P<...>...)`)
-and finally an optional trailing slash (`/?`).  
+Each URL is actually specified as a _regular expression_ -- these are a common
+way to specify string _patterns_ rather than simple constant strings.
+Considering the second URL above, we specify a constant part (`/calc-url/`)
+followed by three variable parts (`(?P<...>...)`) and finally an optional
+trailing slash (`/?`). 
 
-The variable parts are used to pass parameters, `(?P<op>...)` will pass
+The variable parts are used to pass parameters: `(?P<op>...)` will pass
 a parameter labelled `op` to the handler; `(?P<x>...)` will pass a
 parameter labelled `x`, and so on.  In each case, the `...` is another
 regular expression that determines how much of the URL will be passed
-in as the labelled parameter.  In the first case, the `...` is
+in as the labelled parameter.  For the first parameter, the `...` is
 replaced by `add|subtract` which means the parameter `op` will have
 the value `add` or `subtract` depending which appears in the URL.  If
 none appears, the parameter `op` will have a special value called
@@ -117,6 +116,9 @@ can be broken down as `\d` meaning a decimal digit (i.e., 0-9) and `+`
 meaning "one or more of the previous character".  Altogether then,
 both these mean that two variables `x` and `y` will be passed in, both
 containing a non-zero string of decimal digits. 
+
+The net result is that the same calculation as above could also be expressed
+as <http://localhost:8080/calc-url/subtract/1/2/>. 
 
 The file then finishes in the usual manner, with the lines of code
 that actually run your application in response to an incoming
