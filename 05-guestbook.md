@@ -9,8 +9,8 @@ exercises #3 and #4 in particular.
 
 Note that this exercise is about trying to apply the cloud computing
 techniques you have learned so far.  It is __not__ about producing a heavily
-styled, graphically appealing website with flashy images, intrusive
-audio, or extensive use of Javascript.
+styled, graphically appealing website with flashy images, intrusive audio, or
+extensive use of Javascript. 
 
 The Guestbook
 -------------
@@ -48,5 +48,5 @@ the entry.
 
 __Ex.3__.  Enable users to vote for entries with which they agree/disagree.
 
-__Ex.4__.  Enable users to discuss and comment on entries, and on comments, in
-a simple 'threaded' interface. 
+__Ex.4__.  Enable users to discuss and comment on entries and comments in a
+simple 'threaded' interface. 
