@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counting With Tickets Is Even More Fun!</title>
+    <meta charset="utf-8" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+    <p>Time now is {{ now }}.</p>
+    {% if ticket %}
+    <p>Ticket is {{ ticket.value }}, created at {{ ticket.ctime }}.</p>
+    {% endif %}
+    
+    {% if counter %}
+    <div id="mycounter" class="counter">
+      <p>Your latest counter value is {{ counter.value }}.</p>
+      <p>Previous access was at {{ counter.atime }}.</p>
+      <p>It was created at {{ counter.ctime }}.</p>
+    </div>
+    {% endif %}
+
+    {% for c in counters %}
+    <div class="counter">
+      <p>
+        Counter:<b>{{ forloop.counter0 }}</b> (<i>{{ c.ticket.value }}</i>)
+      </p>
+      <p>
+        Value:{{ c.value }} Ctime:{{ c.ctime }} Atime:{{ c.atime }}
+      </p>
+    </div>
+    {% endfor %}
+    
+    <div class="button">
+      <form action="/incr/{% if ticket %}{{ ticket.value }}{% endif %}" 
+            method="post" accept-charset="utf-8">
+        <input id="incr_button" type="submit" value="Increment"/>
+      </form>
+    </div>
+
+    {% if ticket %}    
+    <div class="button">
+      <form action="/value/{{ ticket.value }}" method="get" accept-charset="utf-8">
+        <input id="read_button" type="submit" value="My Values"/>
+      </form>
+    </div>
+    {% endif %}
+
+    <div class="button">
+      <form action="/value" method="get" accept-charset="utf-8">
+        <input id="read_button" type="submit" value="All Values"/>
+      </form>
+    </div>
+    
+  </body>
+</html>
