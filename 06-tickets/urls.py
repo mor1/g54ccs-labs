@@ -4,8 +4,6 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 import views
 
 urls = [
-    ## (r'/ticket/?', views.Ticket),
-
     (r'/value/?', views.Value),
     (r'/value/(?P<ticket>[a-fA-F0-9]+)/?', views.Value),
 

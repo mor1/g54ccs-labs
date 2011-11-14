@@ -33,6 +33,7 @@ class Value(webapp.RequestHandler):
                     'counters': counters,
                     }
         if counter: counter.put()
+        for c in counters: c.put()
         self.response.out.write(render("page.html", context))
 
 class Incr(webapp.RequestHandler):
