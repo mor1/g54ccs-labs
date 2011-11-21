@@ -1,0 +1,4 @@
+cron:
+- description: twitter poller
+  url: /cron
+  schedule: every 2 hours
