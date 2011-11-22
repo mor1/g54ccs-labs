@@ -1,0 +1,11 @@
+.button {
+    float: left;
+}
+
+#mycounter {
+    border: 1px solid red;
+}
+
+.counter {
+    border-bottom: 1px dotted gray;
+}

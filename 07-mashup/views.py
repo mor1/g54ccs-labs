@@ -1,7 +1,8 @@
-import logging, urllib, urlparse
+import logging, urllib, urlparse, datetime, os
 log = logging.info
 
 from google.appengine.ext import webapp
+from google.appengine.ext.webapp import template
 from google.appengine.api import urlfetch, users
 from google.appengine.api.labs import taskqueue
 from django.utils import simplejson as json
@@ -10,6 +11,9 @@ import models
 
 COUNT = 80
 HASHTAG = '#cloud'
+
+def render(page, context):
+    return template.render(os.path.join("templates", page), context)
 
 class Root(webapp.RequestHandler):
     def get(self):
@@ -26,8 +30,10 @@ class Cron(webapp.RequestHandler):
 class Sync(webapp.RequestHandler):
     def get(self, cmd):
         ss = models.SyncStatus.get_by_key_name("twitter-status")
-        self.response.headers['Content-Type'] = 'application/json'
-        self.response.out.write(ss.tojson())
+        context = { "now": datetime.datetime.now().isoformat(),
+                    "state": ss,
+                    }
+        self.response.out.write(render("sync.html", context))
 
     def post(self, cmd):
         if cmd == "start":
@@ -39,13 +45,16 @@ class Sync(webapp.RequestHandler):
             s.put()
 
         elif cmd == "stop":
-            s = models.SyncStatus.get()
+            s = models.SyncStatus.all().get()
             if s.status == models.SYNC_STATUS.inprogress:
                 s.status = models.SYNC_STATUS.unsynchronized
                 s.put()
+            taskqueue.Queue("default").purge()
 
-        self.response.headers['Content-Type'] = 'application/json'
-        self.response.out.write(s.tojson())
+        context = { "now": datetime.datetime.now().isoformat(),
+                    "state": s,
+                    }
+        self.response.out.write(render("sync.html", context))
 
 class Tweets(webapp.RequestHandler):
     def get(self):
@@ -57,7 +66,7 @@ class Tweets(webapp.RequestHandler):
         page = self.request.GET.get("page")
         if page: ps['page'] = page
         
-        url = "http://search.twitter.com/search.json?%s" % (
+        url = "https://search.twitter.com/search.json?%s" % (
             urllib.urlencode(ps),)
         log("url:%s" % url)
         res = urlfetch.fetch(url)
@@ -82,7 +91,10 @@ class Tweets(webapp.RequestHandler):
                 urlo = urlparse.urlsplit(next_page)
                 next_page_rel = urlparse.urlunsplit(
                     ("", "", urlo.path, urlo.query, urlo.fragment))
-                taskqueue.add(url=next_page_rel, method="GET")
+
+                s = models.SyncStatus.all().get()
+                if s.status == models.SYNC_STATUS.inprogress:
+                    taskqueue.add(url=next_page_rel, method="GET")
 
             else:
                 s = models.SyncStatus.get_by_key_name("twitter-status")

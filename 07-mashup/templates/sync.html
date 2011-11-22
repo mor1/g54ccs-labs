@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter Sync Service: Control</title>
+    <meta charset="utf-8" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+    <p>Time now is {{ now }}.</p>
+    <div id="syncstate">
+      {% if state.status %}
+      <p>Current synchronization state is {{ state.status }}</p>
+      {% endif %}
+
+      <p>
+        {% if state.last_sync %}
+        Last completed synchronization was at {{ state.last_sync }}
+        {% else %}
+        Never synchronized!
+        {% endif %}
+      </p>
+
+    </div>
+
+    <div class="button">
+      <form action="/sync/start" method="post" accept-charset="utf-8">
+        <input id="start_button" type="submit" value="start"/>
+      </form>
+    </div>
+
+    <div class="button">
+      <form action="/sync/stop" method="post" accept-charset="utf-8">
+        <input id="stop_button" type="submit" value="stop"/>
+      </form>
+    </div>
+    
+  </body>
+</html>
