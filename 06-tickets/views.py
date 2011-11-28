@@ -22,7 +22,8 @@ class Value(webapp.RequestHandler):
             
         now = datetime.datetime.now().isoformat()
         
-        counter = counters = None
+        counter = None
+        counters = []
         if ticket: counter = models.Counter.all().filter("ticket =", ticket).get()
         else:
             counters = models.Counter.all().fetch(10)

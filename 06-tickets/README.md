@@ -147,7 +147,8 @@ We continue:
                 ticket = models.Ticket.all().filter("value =", ticket).get()
             now = datetime.datetime.now().isoformat()
 
-            counter = counters = None
+            counter = None
+            counters = []
             if ticket: counter = models.Counter.all().filter("ticket =", ticket).get()
             else:
                 counters = models.Counter.all().fetch(10)
@@ -168,11 +169,12 @@ sections, separated by blank lines.
 
 1. In the first section we log any `ticket` value supplied by the user
    (defaulting to `None` if the user did not supply a ticket value), we lookup
-   the actual `Ticket` object with that value, and we compute the current time. 
+   the actual `Ticket` object with that value, and we compute the current
+   time.  
 
-2. In the second section we get the `Counter` objects we need to display -- either
-   the specific counter for the given ticket, or all the counters if no ticket
-   was specified.
+2. In the second section we get the `Counter` objects we need to display --
+   either the specific counter for the given ticket, or all the counters if no
+   ticket was specified. 
    
 3. In the third and final section we construct the `context` dictionary, save
    any counters that we accessed so that their `atime` field is updated, and
@@ -202,7 +204,7 @@ We continue:
                         'counter': counter,
                         }        
             counter.put()
-            for c in counters: c.put()
+
             self.redirect("/value/%s" % ticket.value)
 ```
 
@@ -298,6 +300,9 @@ HTML.  You do not need to worry about the details here!
 ```
 
 ### `static/style.css`
+
+This file is called `style.css` and lives inside a subdirectory of your
+application called `static`.
 
 ```css
     .button {
